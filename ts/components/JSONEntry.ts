@@ -57,6 +57,9 @@ module DFARunner {
                     //app.error.hide();
                     var json = JSON.parse(this._codeMirror.getDoc().getValue());
                     var dfa = DFA.createMachine(<DFAFromJSON>json);
+
+                    this._modified.hide();
+
                     if (app.debugMode) {
                         console.log('"old" DFA: ', services.dfa);
                         console.log('"new" DFA: ', dfa);
@@ -76,8 +79,6 @@ module DFARunner {
                     }
                     services.dfa = dfa;
                     services.events.trigger('dfaChanged');
-
-                    this._modified.hide();
                 } catch (e) {
                     services.dfa = null;
                     this._events.trigger('error');
