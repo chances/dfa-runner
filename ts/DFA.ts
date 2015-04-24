@@ -93,9 +93,15 @@ module DFARunner {
         }
 
         static validate(dfa: DFA): boolean {
-            // TODO: Validate a DFA
+            for (var i = 0; i < dfa.states.length; i++) {
+                for (var j = 0; j < dfa.alphabet.length; j++) {
+                    if (dfa.states[i].transition(dfa.alphabet[j]) === null) {
+                        return false;
+                    }
+                }
+            }
 
-            return false;
+            return true;
         }
 
         get states() {

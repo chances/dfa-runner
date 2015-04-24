@@ -54,7 +54,6 @@ module DFARunner {
             this._codeMirror.on('blur', () => {
                 try {
                     this._error.hide();
-                    //app.error.hide();
                     var json = JSON.parse(this._codeMirror.getDoc().getValue());
                     var dfa = DFA.createMachine(<DFAFromJSON>json);
 

@@ -21,6 +21,8 @@ module DFARunner {
 
                 this._debugMode = false;
 
+                services.events.on('dfaChanged', () => { this.dfaChanged(); });
+
                 services.dfa = new DFA();
                 services.events.trigger('dfaChanged');
 
@@ -54,6 +56,20 @@ module DFARunner {
 
         debug() {
             this._debugMode = true;
+        }
+
+        private dfaChanged() {
+            if (services.dfa !== null) {
+                if (DFA.validate(services.dfa)) {
+                    // DFA is valid
+                    this._error.hide();
+                } else {
+                    // DFA is invalid
+                    this._error.show();
+                }
+            } else {
+                this._error.hide();
+            }
         }
     }
 }
