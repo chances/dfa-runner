@@ -18,6 +18,7 @@
         "./ts/services/*.ts",
 
         "./ts/components/Component.ts",
+        "./ts/components/FormComponent.ts",
         "./ts/components/EnableableComponent.ts",
         "./ts/components/ButtonComponent.ts",
         "./ts/components/InputComponent.ts",
@@ -37,6 +38,8 @@
         "./ts/components/JSONEntry.ts",
 
         "./ts/components/Tester.ts",
+
+        "./ts/components/Upload.ts",
 
         "./ts/StateTransition.ts",
         "./ts/DFA.ts",

@@ -85,4 +85,9 @@ module DFARunner {
         (data?: T): void;
         (data?: any): void;
     }
+
+    export interface EventBridgeCallback<T> {
+        (event: Event, data?: T): void;
+        (event: Event, data?: any): void;
+    }
 }

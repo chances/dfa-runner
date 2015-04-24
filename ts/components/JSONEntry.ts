@@ -52,40 +52,7 @@ module DFARunner {
             });
 
             this._codeMirror.on('blur', () => {
-                try {
-                    this._error.hide();
-                    var json = JSON.parse(this._codeMirror.getDoc().getValue());
-                    var dfa = DFA.createMachine(<DFAFromJSON>json);
-
-                    this._modified.hide();
-
-                    if (app.debugMode) {
-                        console.log('"old" DFA: ', services.dfa);
-                        console.log('"new" DFA: ', dfa);
-                    }
-                    if (services.dfa !== null) {
-                        var newDfaIsNotDifferent = services.dfa.equals(dfa);
-                        if (newDfaIsNotDifferent) {
-                            if (app.debugMode) console.log("DFA is the same, no changes");
-                            return;
-                        }
-                        if (app.debugMode && !newDfaIsNotDifferent) {
-                            console.log('DFA is different, changes found');
-                        }
-                    } else {
-                        // Create an empty DFA template
-                        dfa = new DFA();
-                    }
-                    services.dfa = dfa;
-                    services.events.trigger('dfaChanged');
-                } catch (e) {
-                    services.dfa = null;
-                    this._events.trigger('error');
-                    this._error.show();
-                    //app.error.show();
-
-                    if (app.debugMode) throw e;
-                }
+                this.update();
             });
 
             app.tabs.change((selectedTab: Component) => {
@@ -105,8 +72,24 @@ module DFARunner {
         set value(value: string) {
             try {
                 this._error.hide();
-                var value = JSON.stringify(JSON.parse(value), null, '\t');
+                this.updateDfa(value);
+            } catch (e) {
                 this._codeMirror.getDoc().setValue(value);
+                this._events.trigger('error');
+                this._error.show();
+                //app.error.show();
+
+                if (app.debugMode) {
+                    console.log(services.dfa);
+                    throw e;
+                }
+            }
+        }
+
+        set valueFromUpload(value: string) {
+            try {
+                this._error.hide();
+                this.updateDfa(value, false);
             } catch (e) {
                 this._codeMirror.getDoc().setValue(value);
                 this._events.trigger('error');
@@ -147,6 +130,54 @@ module DFARunner {
 
         get editor(): CodeMirror.Editor {
             return this._codeMirror;
+        }
+
+        update() {
+            try {
+                this._error.hide();
+                this._modified.hide();
+
+                this.updateDfa(this._codeMirror.getDoc().getValue());
+            } catch (e) {
+                services.dfa = null;
+                this._events.trigger('error');
+                this._error.show();
+                this._modified.show();
+                //app.error.show();
+
+                if (app.debugMode) throw e;
+            }
+        }
+
+        private updateDfa(valueAsJSON: string, createTemplate: boolean = true) {
+            var json = JSON.parse(valueAsJSON);
+            var dfa = DFA.createMachine(<DFAFromJSON>json);
+            var dfaIsDifferent: boolean = null;
+
+            if (app.debugMode) {
+                console.log('"old" DFA: ', services.dfa);
+                console.log('"new" DFA: ', dfa);
+            }
+            if (services.dfa !== null) {
+                dfaIsDifferent = !services.dfa.equals(dfa);
+                if (!dfaIsDifferent) {
+                    if (app.debugMode) console.log("DFA is the same, no changes");
+                }
+                if (app.debugMode && dfaIsDifferent) {
+                    console.log('DFA is different, changes found');
+                }
+            } else {
+                dfaIsDifferent = !(dfa === null);
+                if (createTemplate) {
+                    // Create an empty DFA template
+                    dfa = new DFA();
+                }
+            }
+
+            if (dfaIsDifferent) {
+                services.dfa = dfa;
+                services.events.trigger('dfaChanged');
+            }
         }
 
         private dfaChanged() {

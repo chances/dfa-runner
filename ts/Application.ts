@@ -7,6 +7,7 @@ module DFARunner {
         private _json: JSONEntry;
         private _designer: Designer;
         private _tester: Tester;
+        private _upload: Upload;
 
         private _debugMode: boolean;
 
@@ -18,8 +19,13 @@ module DFARunner {
                 this._json = new JSONEntry();
                 this._designer = new Designer();
                 this._tester = new Tester();
+                this._upload = new Upload();
 
                 this._debugMode = false;
+
+                this._upload.upload((json: string) => {
+                    this._json.valueFromUpload = json;
+                });
 
                 services.events.on('dfaChanged', () => { this.dfaChanged(); });
 
