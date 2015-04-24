@@ -48,97 +48,25 @@ services.examples.push({
 
 services.examples.push({
     "name": "{w | w = \"oompa loompa\"}",
-    "states": [
-        "q1",
-        "q2",
-        "q3",
-        "q4",
-        "q5"
-    ],
-    "alphabet": [
-        "oompa",
-        "loompa",
-        " "
-    ],
+    "states": [ "q1", "q2", "q3", "q4", "q5" ],
+    "alphabet": ["oompa", "loompa", " "],
     "transitions": [
-        {
-            "source": "q1",
-            "input": "oompa",
-            "destination": "q2"
-        },
-        {
-            "source": "q1",
-            "input": "loompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q1",
-            "input": " ",
-            "destination": "q5"
-        },
-        {
-            "source": "q2",
-            "input": "oompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q2",
-            "input": "loompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q2",
-            "input": " ",
-            "destination": "q3"
-        },
-        {
-            "source": "q3",
-            "input": "oompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q3",
-            "input": "loompa",
-            "destination": "q4"
-        },
-        {
-            "source": "q3",
-            "input": " ",
-            "destination": "q5"
-        },
-        {
-            "source": "q4",
-            "input": "oompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q4",
-            "input": "loompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q4",
-            "input": " ",
-            "destination": "q5"
-        },
-        {
-            "source": "q5",
-            "input": "oompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q5",
-            "input": "loompa",
-            "destination": "q5"
-        },
-        {
-            "source": "q5",
-            "input": " ",
-            "destination": "q5"
-        }
+        { "source": "q1", "input": "oompa",     "destination": "q2" },
+        { "source": "q1", "input": "loompa",    "destination": "q5" },
+        { "source": "q1", "input": " ",         "destination": "q5" },
+        { "source": "q2", "input": "oompa",     "destination": "q5" },
+        { "source": "q2", "input": "loompa",    "destination": "q5" },
+        { "source": "q2", "input": " ",         "destination": "q3" },
+        { "source": "q3", "input": "oompa",     "destination": "q5" },
+        { "source": "q3", "input": "loompa",    "destination": "q4" },
+        { "source": "q3", "input": " ",         "destination": "q5" },
+        { "source": "q4", "input": "oompa",     "destination": "q5" },
+        { "source": "q4", "input": "loompa",    "destination": "q5" },
+        { "source": "q4", "input": " ",         "destination": "q5" },
+        { "source": "q5", "input": "oompa",     "destination": "q5" },
+        { "source": "q5", "input": "loompa",    "destination": "q5" },
+        { "source": "q5", "input": " ",         "destination": "q5" }
     ],
     "startState": "q1",
-    "acceptStates": [
-        "q4"
-    ]
+    "acceptStates": ["q4"]
 });
