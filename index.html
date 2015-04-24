@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>DFA Studio</title>
+
+  <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+  <link type="text/css" rel="stylesheet" href="css/bootstrap/bootstrap-theme.min.css">
+
+  <link type="text/css" rel="stylesheet" href="css/codemirror.css">
+
+  <link type="text/css" rel="stylesheet" href="css/main.css">
+
+  <!--script type="text/javascript" src="js/lib/jquery.min.js"></script>
+  <script type="text/javascript" src="js/lib/bootstrap.min.js"></script-->
+
+  <script type="text/javascript" src="js/lib/zepto.min.js"></script>
+  <script type="text/javascript" src="js/lib/fx.js"></script>
+
+  <script type="text/javascript" src="js/lib/codemirror.js"></script>
+  <script type="text/javascript" src="js/lib/javascript.mode.js"></script>
+  <script type="text/javascript" src="js/lib/matchbrackets.cm.js"></script>
+  <script type="text/javascript" src="js/lib/closebrackets.cm.js"></script>
+
+  <script type="text/javascript" src="js/dfa.ts.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">DFA Studio</a>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+  <main class="container container-fluid">
+    <nav>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#designer">DFA Designer</a></li>
+        <li role="presentation"><a href="#json">JSON</a></li>
+      </ul>
+      <div class="toolbar">
+        <span id="error" class="error text-danger">JSON is malformed!</span>
+        <label for="examples">Examples:</label>
+        <select id="examples">
+          <option value="-1"></option>
+        </select>
+      </div>
+      <!--button class="btn btn-danger">Delete</button-->
+    </nav>
+    <div id="tabs">
+      <div id="json" class="tab" data-href="#json">
+        <div class="toolbar">
+          <span id="jsonError" class="error text-danger">JSON is malformed!</span>
+          <span class="spacer"></span>
+          <span class="text-muted">Modified and not updated</span>
+          <!--button class="btn btn-primary" disabled>Update</button-->
+        </div>
+        <textarea id="jsonEntry" class="form-control"></textarea>
+      </div>
+      <div id="designer" class="tab" data-href="#designer">
+        <div>
+          <div id="states" class="list">
+            <label class="control-label">States:</label>
+            <select class="form-control" size="5"></select>
+            <div class="toolbar">
+              <form>
+                <input type="text" class="form-control" placeholder="q1">
+                <button class="btn btn-default btn-sm add" disabled title="Add a state"><i class="glyphicon glyphicon-plus"></i><span class="sr-only">Add state</span></button>
+              </form>
+              <button class="btn btn-default btn-sm remove" disabled title="Remove a state"><i class="glyphicon glyphicon-trash"></i><span class="sr-only">Remove state</span></button>
+              <!--span class="spacer"></span-->
+              <label class="checkbox-inline"><input type="checkbox" disabled> Accept state</label>
+            </div>
+          </div>
+          <div id="alphabet" class="list">
+            <label class="control-label">Alphabet:</label>
+            <select class="form-control" size="5"></select>
+            <div class="toolbar">
+              <form>
+                <input type="text" class="form-control" placeholder="foo">
+                <button class="btn btn-default btn-sm add" disabled title="Add an alphabet item"><i class="glyphicon glyphicon-plus"></i><span class="sr-only">Add alphabet item</span></button>
+              </form>
+              <button class="btn btn-default btn-sm remove" disabled title="Remove an alphabet item"><i class="glyphicon glyphicon-trash"></i><span class="sr-only">Remove alphabet item</span></button>
+            </div>
+          </div>
+        </div>
+        <div>
+          <label class="control-label">State transitions:</label>
+          <div id="transitions">
+            <table class="table table-bordered table-striped">
+              <thead></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="container container-fluid">
+    <div id="tester" class="form-group">
+      <label for="string">Test a string: </label>
+      <div class="input-group has-error">
+        <input type="text" class="form-control" id="string" placeholder="The quick brown fox jumps over the lazy dog">
+        <div class="input-group-addon" style="padding-right: 27px; border-left: none;"><i id="testResultIcon" class="glyphicon glyphicon-remove"></i></div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

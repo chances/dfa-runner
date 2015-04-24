@@ -1,0 +1,47 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "noLib": false,
+        "outDir": "js/"
+    },
+    "filesGlob": [
+        "./ts/declarations/**/*.ts",
+
+        "./ts/Helpers.ts",
+        "./ts/Bridge.ts",
+
+        "./ts/services/*.ts",
+
+        "./ts/components/Component.ts",
+        "./ts/components/EnableableComponent.ts",
+        "./ts/components/ButtonComponent.ts",
+        "./ts/components/InputComponent.ts",
+        "./ts/components/TextboxComponent.ts",
+        "./ts/components/CheckboxComponent.ts",
+        "./ts/components/ListComponent.ts",
+
+        "./ts/components/ErrorMessage.ts",
+        "./ts/components/Examples.ts",
+
+        "./ts/components/Tabs.ts",
+
+        "./ts/components/States.ts",
+        "./ts/components/Alphabet.ts",
+        "./ts/components/Transitions.ts",
+        "./ts/components/Designer.ts",
+        "./ts/components/JSONEntry.ts",
+
+        "./ts/components/Tester.ts",
+
+        "./ts/StateTransition.ts",
+        "./ts/DFA.ts",
+        "./ts/Application.ts",
+        "./ts/main.ts",
+        "./ts/examples.ts"
+    ]
+}

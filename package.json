@@ -1,0 +1,31 @@
+{
+  "name": "dfa-runner",
+  "version": "1.0.0",
+  "description": "Bring the sexy back to runaway scripts.",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/chances/dfa-runner"
+  },
+  "keywords": [
+    "js",
+    "ts",
+    "typescript",
+    "webapp",
+    "dfa"
+  ],
+  "author": "Chance Snow <chances@cat.pdx.edu>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chances/dfa-runner/issues"
+  },
+  "homepage": "https://github.com/chances/dfa-runner",
+  "devDependencies": {
+    "del": "^1.1.0",
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.2",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-typescript": "^2.3.0",
+    "gulp-for-compass": "^0.0.2"
+  }
+}

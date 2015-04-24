@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="TypeScriptCompiler">
+    <option name="typeScriptServiceDirectory" value="/usr/local/lib/node_modules/typescript/bin" />
+    <option name="typeScriptCompilerParams" value="--out dfa.ts.js" />
+    <option name="scopeName" value="TypeScript" />
+    <option name="hasOutDirectory" value="true" />
+    <option name="outDirectory" value="$FileDirRelativeToProjectRoot$/js" />
+    <option name="versionType" value="SERVICE_DIRECTORY" />
+  </component>
+</project>
