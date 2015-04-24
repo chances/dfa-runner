@@ -47,6 +47,22 @@ services.examples.push({
 });
 
 services.examples.push({
+    "name": "{w | w = \"foobar\"}",
+    "states": ["q1", "q2", "q3"],
+    "alphabet": ["foo", "bar"],
+    "transitions": [
+        { "source": "q1", "input": "foo", "destination": "q3" },
+        { "source": "q1", "input": "bar", "destination": "q3" },
+        { "source": "q2", "input": "foo", "destination": "q3" },
+        { "source": "q2", "input": "bar", "destination": "q3" },
+        { "source": "q3", "input": "foo", "destination": "q3" },
+        { "source": "q3", "input": "bar", "destination": "q2" }
+    ],
+    "startState": "q1",
+    "acceptStates": ["q2"]
+});
+
+services.examples.push({
     "name": "{w | w = \"oompa loompa\"}",
     "states": [ "q1", "q2", "q3", "q4", "q5" ],
     "alphabet": ["oompa", "loompa", " "],
