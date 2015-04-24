@@ -91,6 +91,10 @@ module DFARunner {
                     }
                     this._tbody.e.append($tr);
                 }
+            } else {
+                // Clear transitions table
+                this._thead.e.empty();
+                this._tbody.e.empty();
             }
         }
     }
