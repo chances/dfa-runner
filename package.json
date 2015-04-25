@@ -1,7 +1,7 @@
 {
   "name": "dfa-runner",
   "version": "1.0.0",
-  "description": "Bring the sexy back to runaway scripts.",
+  "description": "A web application that analyzes DFAs as JSON and tests strings against those DFAs.",
   "private": true,
   "repository": {
     "type": "git",
