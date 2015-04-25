@@ -86,3 +86,23 @@ services.examples.push({
     "startState": "q1",
     "acceptStates": ["q4"]
 });
+
+services.examples.push({
+    "name": "{w | w is a binary multiple of 5}",
+    "states": ["q0", "q1", "q2", "q3", "q4"],
+    "alphabet": ["0", "1"],
+    "transitions": [
+        { "source": "q0", "input": "0", "destination": "q0" },
+        { "source": "q0", "input": "1", "destination": "q1" },
+        { "source": "q1", "input": "0", "destination": "q2" },
+        { "source": "q1", "input": "1", "destination": "q4" },
+        { "source": "q2", "input": "0", "destination": "q3" },
+        { "source": "q2", "input": "1", "destination": "q0" },
+        { "source": "q3", "input": "0", "destination": "q4" },
+        { "source": "q3", "input": "1", "destination": "q3" },
+        { "source": "q4", "input": "0", "destination": "q1" },
+        { "source": "q4", "input": "1", "destination": "q2" }
+    ],
+    "startState": "q0",
+    "acceptStates": ["q0"]
+});
